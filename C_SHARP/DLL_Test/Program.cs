@@ -10,6 +10,14 @@ namespace DLL_Test
             Console.WriteLine(Int16.MaxValue.ToString() + " = " + _intShort(Int16.MaxValue));
             Console.WriteLine(Int32.MaxValue.ToString() + " = " + _intLongWord(Int32.MaxValue));
 
+            Int16 i = 34;
+            Console.WriteLine(_intShort2(40, ref i));
+            Console.WriteLine(i);
+
+            string x = "Guionardo Furlan";
+
+            Console.WriteLine(_StringRef(ref x));
+            Console.WriteLine(x);
             Console.ReadLine();
         }
 
@@ -30,6 +38,9 @@ namespace DLL_Test
 
         [DllImport(dll)]
         public static extern Int32 _intLongWord(Int32 i);
+
+        [DllImport(dll)]
+        public static extern Int32 _intShort2(Int16 i, ref Int16 i2);
 
     }
 }
