@@ -35,3 +35,5 @@ O tipo de dado usado para as strings no FPC é o PAnsiString, que é um ponteiro
 Este ponteiro refere a uma área de memória alocada pela aplicação e não pela DLL. 
 Se o valor será alterado, isto é, a variável for passada por referência, deve-se incluir o atributo [Marshal](https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.marshal%28v=vs.100%29.aspx) para o parâmetro de referência (vide o exemplo em C#).
 Se apenas o parâmetro for inputado a função da DLL sem referência, basta declará-lo como string.
+
+Importante: Um string passado por referência deve ter seu conteúdo previamente criado e a função na DLL deve checar o seu tamanho para evitar [SIGSEGV](https://pt.wikipedia.org/wiki/SIGSEGV) e estourar uma exceção que vai trazer uma mensagem genérica e fazer você quebrar a cabeça até achar onde deixou cair as calças.
